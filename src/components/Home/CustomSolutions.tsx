@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { CustomSection } from "../../../public/images";
 
@@ -40,7 +39,7 @@ export default function CustomSolutions() {
           </p>
 
           <p className="mt-4 text-gray-600">
-            With AiBit Soft, every site is custom-designed; it responds (automatically adjusts) to different screen sizes so users always get a smooth, easy, clean experience no matter what device they're using.
+            With AiBit Soft, every site is custom-designed; it responds (automatically adjusts) to different screen sizes so users always get a smooth, easy, clean experience no matter what device they&apos;re using.
           </p>
 
           <div className="mt-8 flex gap-4">

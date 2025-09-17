@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Smartphone, TrendingUp, AlertTriangle, Circle, CheckCircle2 } from "lucide-react";
+import { Smartphone, TrendingUp, AlertTriangle, CheckCircle2 } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -46,6 +46,7 @@ const HeroSection = () => {
            </div>
         </div>
       </div>
+    </div>
     </section>
   );
 };

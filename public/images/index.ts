@@ -1,2 +1,12 @@
 export { default as logo } from './logo.svg';
 export { default as CustomSection } from './CustomSection.svg';
+export { default as mob } from './mob.svg';
+export { default as revenue } from './revenue.svg';
+export { default as user } from './user.svg';
+export { default as cart } from './cart.svg';
+export { default as Alert } from './Alert.svg';
+export { default as app } from './app.svg';
+export { default as mobile } from './mobile.svg';
+export { default as UI } from './UI.svg';
+export { default as web } from './web.svg';
+export { default as Ai } from './Ai.svg';

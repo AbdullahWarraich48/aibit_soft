@@ -1,9 +1,11 @@
+@import url('./fonts.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: 'Sora', Arial, Helvetica, sans-serif;
 }
 
 
@@ -72,6 +74,7 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Sora', sans-serif;
   }
 }
 

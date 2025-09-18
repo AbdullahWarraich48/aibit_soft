@@ -6,7 +6,7 @@ export const customSolutionsData: CustomSolutionsData = {
     description: 'Get a mobile-first website that converts visitors into customers across all devices.',
     button: {
       text: 'Get an Expert Appointment',
-      className: 'px-5 py-2 text-sm mt-6 mb-10 font-medium text-black border border-gray-300 rounded-3xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 font-sans'
+      className: 'px-8 py-4 text-base mt-6 mb-10 font-medium text-black border border-gray-300 rounded-3xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 font-sans'
     }
   },
   banner: 'CUSTOM SOLUTIONS',
@@ -21,11 +21,11 @@ export const customSolutionsData: CustomSolutionsData = {
   buttons: {
     primary: {
       text: 'Get Started Today',
-      className: 'px-5 py-2 text-sm font-medium text-white bg-[#2B4DDF] border-black rounded-3xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 font-sans'
+      className: 'px-8 py-4 text-base font-medium text-white bg-[#2B4DDF] border-black rounded-3xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 font-sans'
     },
     secondary: {
       text: 'Book an expert',
-      className: 'px-4 py-2 text-sm font-medium bg-white text-black border border-gray-300 rounded-3xl transition-colors duration-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2 font-sans'
+      className: 'px-4 py-4 text-base font-medium bg-white text-black border border-gray-300 rounded-3xl transition-colors duration-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2 font-sans'
     }
   },
   features: [

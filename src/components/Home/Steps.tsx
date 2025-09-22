@@ -2,6 +2,8 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, MessageCircle, Pencil, Rocket, Target, Layers, TrendingUp } from "lucide-react";
+import { steps } from "../../../public/images";
+import Image from "next/image";
 
 export default function ProcessSteps() {
   return (
@@ -22,53 +24,55 @@ export default function ProcessSteps() {
         <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* Left Column – Process Flow */}
           <div className="bg-gray-50 rounded-xl p-6 flex flex-col items-center">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
-              {/* Step 1 */}
-              <div className="flex flex-col items-center">
-                <Card className="w-[80px] h-[80px] bg-blue-600 text-white shadow-lg rounded-full">
-                  <CardContent className="flex items-center justify-center h-full p-0">
-                    <MessageCircle className="h-10 w-10" />
-                  </CardContent>
-                </Card>
-                <div className="mt-3 text-center">
-                  <h3 className="text-lg font-semibold mb-1">Step 1</h3>
-                  <p className="text-sm text-gray-700">Consultation & Strategy</p>
+            {false && (
+              <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
+                <div className="flex flex-col items-center">
+                  <Card className="w-[80px] h-[80px] bg-blue-600 text-white shadow-lg rounded-full">
+                    <CardContent className="flex items-center justify-center h-full p-0">
+                      <MessageCircle className="h-10 w-10" />
+                    </CardContent>
+                  </Card>
+                  <div className="mt-3 text-center">
+                    <h3 className="text-lg font-semibold mb-1">Step 1</h3>
+                    <p className="text-sm text-gray-700">Consultation & Strategy</p>
+                  </div>
+                </div>
+
+                <ArrowRight className="h-6 w-6 text-blue-500 rotate-90 md:rotate-0" />
+
+                <div className="flex flex-col items-center">
+                  <Card className="w-[80px] h-[80px] bg-red-500 text-white shadow-lg rounded-full">
+                    <CardContent className="flex items-center justify-center h-full p-0">
+                      <Pencil className="h-10 w-10" />
+                    </CardContent>
+                  </Card>
+                  <div className="mt-3 text-center">
+                    <h3 className="text-lg font-semibold mb-1">Step 2</h3>
+                    <p className="text-sm text-gray-700">Design & Development</p>
+                  </div>
+                </div>
+
+                <ArrowRight className="h-6 w-6 text-blue-500 rotate-90 md:rotate-0" />
+
+                <div className="flex flex-col items-center">
+                  <Card className="w-[80px] h-[80px] bg-green-500 text-white shadow-lg rounded-full">
+                    <CardContent className="flex items-center justify-center h-full p-0">
+                      <Rocket className="h-10 w-10" />
+                    </CardContent>
+                  </Card>
+                  <div className="mt-3 text-center">
+                    <h3 className="text-lg font-semibold mb-1">Step 3</h3>
+                    <p className="text-sm text-gray-700">Launch & Ongoing Support</p>
+                  </div>
                 </div>
               </div>
-
-              <ArrowRight className="h-6 w-6 text-blue-500 rotate-90 md:rotate-0" />
-
-              {/* Step 2 */}
-              <div className="flex flex-col items-center">
-                <Card className="w-[80px] h-[80px] bg-red-500 text-white shadow-lg rounded-full">
-                  <CardContent className="flex items-center justify-center h-full p-0">
-                    <Pencil className="h-10 w-10" />
-                  </CardContent>
-                </Card>
-                <div className="mt-3 text-center">
-                  <h3 className="text-lg font-semibold mb-1">Step 2</h3>
-                  <p className="text-sm text-gray-700">Design & Development</p>
-                </div>
-              </div>
-
-              <ArrowRight className="h-6 w-6 text-blue-500 rotate-90 md:rotate-0" />
-
-              {/* Step 3 */}
-              <div className="flex flex-col items-center">
-                <Card className="w-[80px] h-[80px] bg-green-500 text-white shadow-lg rounded-full">
-                  <CardContent className="flex items-center justify-center h-full p-0">
-                    <Rocket className="h-10 w-10" />
-                  </CardContent>
-                </Card>
-                <div className="mt-3 text-center">
-                  <h3 className="text-lg font-semibold mb-1">Step 3</h3>
-                  <p className="text-sm text-gray-700">Launch & Ongoing Support</p>
-                </div>
-              </div>
+            )}
+            <div className="flex justify-center">
+            <Image src={steps} alt="steps" width={600} height={100} />
             </div>
 
             {/* Left bottom paragraph */}
-            <p className="mt-6 text-gray-700 text-sm leading-relaxed text-center">
+            <p className="mt-6 text-gray-700 text-sm leading-7 text-left max-w-2xl self-start">
               At AiBit Soft, we believe digital transformation doesn’t have to be complicated.
               That’s why we’ve designed a 3-step process that takes you from idea to launch —
               and beyond. Whether it’s a website, mobile app, AI tool, or marketing campaign,

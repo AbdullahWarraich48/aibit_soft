@@ -66,16 +66,16 @@ export default function ProblemsHero({ activeSection, setActiveSection }: Proble
           {problems.map((text, index) => (
             <Card 
               key={index}
-              className="flex items-start space-x-3 p-6 bg-gradient-to-r from-[#334DD8] to-[#2A3EB1] border border-blue-800 rounded-xl"
+              className="flex items-center space-x-3 p-6 bg-gradient-to-r from-[#334DD8] to-[#2A3EB1] border border-blue-800 rounded-xl"
             >
-              <AlertTriangle className="text-red-500 mt-1 w-5 h-5 flex-shrink-0" />
+              <AlertTriangle className="text-red-500 w-10 h-9  flex-shrink-0" />
               <p className="text-sm text-white leading-relaxed">{text}</p>
             </Card>
           ))}
         </div>
 
         {/* Navigation Tabs */}
-        <div className="mt-20 flex flex-row justify-center items-center gap-7 border px-7 py-5 rounded-lg w-fit mx-auto bg-[#5766BF]">
+        <div className="mt-5 flex flex-row justify-center items-center gap-7 border px-7 py-5 rounded-lg w-fit mx-auto bg-[#5766BF]">
           <button
             onClick={() => setActiveSection('statistics')}
             className={`flex items-center gap-2 transition-all duration-200 ${

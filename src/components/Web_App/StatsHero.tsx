@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { TrendingUp, AlertTriangle, CheckCircle2, Users, Clock, Zap } from "lucide-react";
 import { heroSectionData } from '@/data';
@@ -63,7 +63,9 @@ export default function StatsHero({ activeSection, setActiveSection }: StatsHero
                 <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center mb-2">
                   <Image src={mobile} alt="Mobile" width={12} height={12} />
                 </div>
-                <div className="text-3xl font-bold mt-6 ">59.7%</div>
+                <div className="text-3xl font-bold mt-6 ">
+                  <CountUp end={59.7} decimals={1} suffix="%" />
+                </div>
                 <p className="text-sm">of global website traffic comes from mobile devices</p>
               </CardContent>
             </Card>
@@ -73,7 +75,9 @@ export default function StatsHero({ activeSection, setActiveSection }: StatsHero
                 <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center mb-2">
                   <Users className="w-5 h-5 text-[#1e40af]" />
                 </div>
-                <div className="text-3xl font-bold">85.65%</div>
+                <div className="text-3xl font-bold">
+                  <CountUp end={85.65} decimals={2} suffix="%" />
+                </div>
                 <p className="text-sm">of mobile cart abandonment rate</p>
               </CardContent>
             </Card>
@@ -83,7 +87,9 @@ export default function StatsHero({ activeSection, setActiveSection }: StatsHero
                 <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center mb-2">
                   <Clock className="w-5 h-5 text-[#1e40af]" />
                 </div>
-                <div className="text-3xl font-bold">85%</div>
+                <div className="text-3xl font-bold">
+                  <CountUp end={85} suffix="%" />
+                </div>
                 <p className="text-sm">of users expect mobile to be as good as desktop</p>
               </CardContent>
             </Card>
@@ -93,7 +99,9 @@ export default function StatsHero({ activeSection, setActiveSection }: StatsHero
                 <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center mb-2">
                   <Zap className="w-5 h-5 text-[#1e40af]" />
                 </div>
-                <div className="text-3xl font-bold">53%</div>
+                <div className="text-3xl font-bold">
+                  <CountUp end={53} suffix="%" />
+                </div>
                 <p className="text-sm">of users leave if a site is too slow or clunky</p>
               </CardContent>
             </Card>
@@ -142,4 +150,55 @@ export default function StatsHero({ activeSection, setActiveSection }: StatsHero
        </div>
     </main>
   )
+}
+
+type CountUpProps = {
+  end: number
+  durationMs?: number
+  decimals?: number
+  suffix?: string
+}
+
+function CountUp({ end, durationMs = 800, decimals = 0, suffix = "" }: CountUpProps) {
+  const [value, setValue] = useState(0)
+  const ref = useRef<HTMLSpanElement | null>(null)
+  const [hasRun, setHasRun] = useState(false)
+
+  useEffect(() => {
+    if (!ref.current || hasRun) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setHasRun(true)
+            observer.disconnect()
+
+            const startTime = performance.now()
+            const startVal = 0
+            const change = end - startVal
+
+            const step = (now: number) => {
+              const elapsed = now - startTime
+              const progress = Math.min(elapsed / durationMs, 1)
+              const eased = 1 - Math.pow(1 - progress, 3)
+              const current = startVal + change * eased
+              setValue(current)
+              if (progress < 1) requestAnimationFrame(step)
+            }
+
+            requestAnimationFrame(step)
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+
+    observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [end, durationMs, hasRun])
+
+  const formatted = value.toFixed(decimals)
+
+  return <span ref={ref}>{formatted}{suffix}</span>
 }

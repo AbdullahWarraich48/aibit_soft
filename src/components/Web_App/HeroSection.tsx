@@ -65,7 +65,7 @@ const HeroSection = () => {
         return <SolutionGrid activeSection={activeSection} setActiveSection={setActiveSection} />;
       default:
         return (
-          <section className="relative min-h-screen overflow-hidden bg-gradient-to-r from-[#2644E7] to-[#0A1763] font-sans mt-[-800px]">
+          <section className="relative min-h-screen overflow-hidden bg-gradient-to-r from-[#2644E7] to-[#0A1763] font-sans mt-[-80px]">
             <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
 
           

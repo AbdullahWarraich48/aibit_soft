@@ -1,5 +1,5 @@
 // components/Footer.js
-// import { Facebook, Instagram, Twitter, Linkedin, Github, Pinterest, Discord, Tiktok, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Linkedin, Github, Youtube } from 'lucide-react';
 import Image from 'next/image';
 import { footerlogo } from '../../public/images';
 import { footerData } from '@/data/footer';

@@ -53,22 +53,21 @@ export const navigationData: NavigationData = {
       items: [
         {
           title: 'Digital Marketing',
-          subtitle: 'Stratigies to grow your brand online',
+          subtitle: 'Strategies to grow your brand online',
           description: 'Integrated campaigns that boost traffic and conversions.',
-          href: '/marketing-automation'
+          href: '/digital-marketing'
         },
         {
           title: 'Content That Converts',
-          subtitle: ' Blog & Content Marketing, SEO & AI SEO',
+          subtitle: 'Blog & Content Marketing, SEO & AI SEO',
           description: 'Content that educates visitors and turns them into customers.',
-          href: '/seo-optimization'
+          href: '/content-that-converts'
         },
-           
         {
           title: 'Social Ads That Sell',
-          subtitle:' Engaging Social Media Advertising campaigns',
+          subtitle: 'Engaging Social Media Advertising campaigns',
           description: 'Targeted ad strategies that increase engagement and sales.',
-          href: '/content-marketing'
+          href: '/social-ads-that-sell'
         }
       ]
     },
@@ -76,24 +75,40 @@ export const navigationData: NavigationData = {
       title: 'Resources',
       items: [
         {
-          title: 'Blog',
-          description: 'Latest insights, tips, and trends in AI and technology.',
+          title: 'Web Design',
+          subtitle: 'Modern design principles and best practices',
+          description: 'Learn the latest web design trends, UI/UX principles, and responsive design techniques.',
+          href: '/web-design'
+        },
+        {
+          title: 'SEO and Marketing',
+          subtitle: 'Digital marketing strategies and SEO optimization',
+          description: 'Master SEO techniques, content marketing, and digital advertising strategies.',
+          href: '/seo-marketing'
+        },
+        {
+          title: 'AI Automation',
+          subtitle: 'Artificial intelligence and automation tools',
+          description: 'Explore AI technologies, automation workflows, and intelligent business solutions.',
+          href: '/ai-automation'
+        },
+        {
+          title: 'Business Growth',
+          subtitle: 'Strategies for scaling your business',
+          description: 'Discover proven methods for business expansion, growth hacking, and market penetration.',
+          href: '/business-growth'
+        },
+        {
+          title: 'Blogs',
+          subtitle: 'Latest insights, tips, and trends',
+          description: 'Stay updated with industry news, expert opinions, and actionable business insights.',
           href: '/blog'
         },
         {
-          title: 'Case Studies',
-          description: 'Real-world examples of successful AI implementations.',
-          href: '/case-studies'
-        },
-        {
-          title: 'Whitepapers',
-          description: 'In-depth research and analysis on AI technologies.',
-          href: '/whitepapers'
-        },
-        {
-          title: 'Webinars',
-          description: 'Live sessions with industry experts and thought leaders.',
-          href: '/webinars'
+          title: 'Mobile Apps',
+          subtitle: 'Mobile development and app strategies',
+          description: 'Learn mobile app development, user experience design, and app store optimization.',
+          href: '/mobile-apps'
         }
       ]
     },
@@ -102,23 +117,21 @@ export const navigationData: NavigationData = {
       items: [
         {
           title: 'Contact Us',
+          subtitle: 'Get personalized assistance',
           description: 'Get in touch with our team for personalized assistance.',
           href: '/contact'
         },
         {
-          title: 'Free Consultation',
-          description: 'Schedule a free consultation to discuss your needs.',
-          href: '/consultation'
+          title: 'Book an Expert Appointment',
+          subtitle: 'Schedule a consultation with our experts',
+          description: 'Book a one-on-one session with our specialists to discuss your project.',
+          href: '/book-appointment'
         },
         {
-          title: 'Support',
-          description: 'Get help and support for your AI solutions.',
-          href: '/support'
-        },
-        {
-          title: 'Partnership',
-          description: 'Explore partnership opportunities with AIBit.',
-          href: '/partnership'
+          title: 'Get a Proposal',
+          subtitle: 'Request a custom proposal',
+          description: 'Get a detailed proposal tailored to your specific business needs.',
+          href: '/get-proposal'
         }
       ]
     }

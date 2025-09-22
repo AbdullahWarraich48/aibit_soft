@@ -37,7 +37,7 @@ export interface MobileExperienceData {
   cards: ImpactCard[];
 }
 
-// Why Choose Data Types
+
 export interface BenefitCard {
   icon: string; // SVG path data as string
   title: string;
@@ -92,6 +92,24 @@ export interface SocialIcon {
   href: string;
 }
 
+export interface ContactFormData {
+  title: string;
+  description: string;
+  fields: {
+    name: string;
+    email: string;
+    phone: string;
+    message: string;
+  };
+  services: {
+    title: string;
+    options: string[];
+  };
+  button: {
+    text: string;
+  };
+}
+
 export interface FooterData {
   logo: {
     src: string;
@@ -107,6 +125,7 @@ export interface FooterData {
     phone: string;
     address: string;
   };
+  contactForm: ContactFormData;
   copyright: string;
   legal: {
     terms: string;

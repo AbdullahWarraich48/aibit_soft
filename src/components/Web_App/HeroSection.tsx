@@ -18,7 +18,7 @@ const HeroSection = () => {
   const [activeSection, setActiveSection] = useState('hero');
 
   const NavigationButtons = () => (
-    <div className="mt-20 flex flex-row justify-center items-center gap-7 border px-7 py-5 rounded-lg w-fit mx-auto bg-[#5766BF]">
+    <div className="mt-10 flex flex-row justify-center items-center gap-7 border px-7 py-5 rounded-lg w-fit mx-auto bg-[#5766BF]">
       <button 
         onClick={() => setActiveSection('statistics')}
         className={`flex items-center gap-2 transition-all duration-200 ${
@@ -65,7 +65,7 @@ const HeroSection = () => {
         return <SolutionGrid activeSection={activeSection} setActiveSection={setActiveSection} />;
       default:
         return (
-          <section className="relative min-h-screen overflow-hidden bg-gradient-to-r from-[#2644E7] to-[#0A1763] font-sans">
+          <section className="relative min-h-screen overflow-hidden bg-gradient-to-r from-[#2644E7] to-[#0A1763] font-sans mt-[-900px]">
             <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
 
           

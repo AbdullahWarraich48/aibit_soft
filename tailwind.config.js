@@ -9,7 +9,7 @@ module.exports = {
   theme: {
 	extend: {
 		fontFamily: {
-			sans: ['Sora', 'sans-serif'],
+			sans: ['Sora'],
 		},
 		colors: {
 			background: 'hsl(var(--background))',
@@ -74,14 +74,87 @@ module.exports = {
 				to: {
 					height: '0'
 				}
+			},
+			'slideInFromTop': {
+				'0%': {
+					transform: 'translateY(-50px) rotate(-10deg) scale(0.8)',
+					opacity: '0.5'
+				},
+				'30%': {
+					transform: 'translateY(-25px) rotate(5deg) scale(0.95)',
+					opacity: '0.8'
+				},
+				'70%': {
+					transform: 'translateY(-5px) rotate(-2deg) scale(1.03)',
+					opacity: '0.95'
+				},
+				'100%': {
+					transform: 'translateY(0) rotate(0deg) scale(1.05)',
+					opacity: '1'
+				}
+			},
+			'slideDownToUp': {
+				'0%': {
+					transform: 'translateY(40px) rotate(8deg) scale(0.9)',
+					opacity: '0.6'
+				},
+				'30%': {
+					transform: 'translateY(20px) rotate(-4deg) scale(0.95)',
+					opacity: '0.8'
+				},
+				'70%': {
+					transform: 'translateY(-10px) rotate(2deg) scale(1.02)',
+					opacity: '0.95'
+				},
+				'100%': {
+					transform: 'translateY(0) rotate(0deg) scale(1)',
+					opacity: '1'
+				}
+			},
+			'slideUpToDown': {
+				'0%': {
+					transform: 'translateY(-20px) rotate(-6deg) scale(1.02)',
+					opacity: '0.9'
+				},
+				'30%': {
+					transform: 'translateY(10px) rotate(3deg) scale(0.98)',
+					opacity: '0.85'
+				},
+				'70%': {
+					transform: 'translateY(25px) rotate(-1deg) scale(0.95)',
+					opacity: '0.8'
+				},
+				'100%': {
+					transform: 'translateY(0) rotate(0deg) scale(1)',
+					opacity: '1'
+				}
 			}
 		},
 		animation: {
 			'accordion-down': 'accordion-down 0.2s ease-out',
 			'accordion-up': 'accordion-up 0.2s ease-out'
+		},
+		scale: {
+			'102': '1.02'
 		}
 	}
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    function({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          /* IE and Edge */
+          '-ms-overflow-style': 'none',
+          /* Firefox */
+          'scrollbar-width': 'none',
+          /* Safari and Chrome */
+          '&::-webkit-scrollbar': {
+            display: 'none'
+          }
+        }
+      })
+    }
+  ],
 };
 

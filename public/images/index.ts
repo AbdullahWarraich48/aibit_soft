@@ -32,3 +32,8 @@ export { default as whatsap } from './whatsap.svg';
 export { default as meet } from './meet.svg';
 export{default as footerlogo} from './footerlogo.svg';
 export{default as steps} from './steps.svg';
+export{default as ban} from './ban.svg';
+
+export{default as Director1} from './Director.jpg';
+export{default as Director2} from './Director2.svg';
+export{default as Director3} from './Director3.svg';

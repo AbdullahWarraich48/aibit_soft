@@ -20,14 +20,14 @@ export default function TeamSection() {
           name: "Dr. Maya Chen",
           role: "Research & Strategy (PhD)",
           desc: "Combines human-centered research with data analytics to shape product direction.",
-          image: "/images/Director.jpg",
+          image: "/images/Director1.svg",
         },
         {
           name: "Dr. Maya Chen",
           role: "UX Research Lead",
           desc: "Leads discovery, usability studies, and synthesis to align teams on insights.",
           //    image: "/images/maya2.jpg",
-          image: "/images/Director.jpg",
+          image: "/images/Director2.svg",
         },
       ],
     },
@@ -37,19 +37,19 @@ export default function TeamSection() {
           name: "Sarah Malik",
           role: "Growth Strategist",
           desc: "Designs data-driven roadmaps to scale products and capture new markets.",
-          image: "/images/Director.jpg",
+          image: "/images/Director2.svg",
         },
         {
           name: "Sarah Malik",
           role: "Lifecycle Marketing",
           desc: "Owns activation, retention, and monetization experiments end-to-end.",
-          image: "/images/Director.jpg",
+          image: "/images/Director3.svg",
         },
         {
           name: "Sarah Malik",
           role: "Revenue Operations",
           desc: "Builds funnels and analytics to uncover growth opportunities.",
-          image: "/images/Director.jpg",            
+          image: "/images/Director1.svg",            
         },
       ],
     },
@@ -59,13 +59,13 @@ export default function TeamSection() {
           name: "Daniel Reyes",
           role: "Lead Software Engineer",
           desc: "Architects scalable systems and ensures clean, maintainable code.",
-          image: "/images/daniel1.jpg",
+          image: "/images/Director1.svg",
         },
         {
           name: "Daniel Reyes",
           role: "Platform Engineer",
           desc: "Focuses on reliability, CI/CD, and developer experience.",
-          image: "/images/daniel2.jpg",
+          image: "/images/Director2.svg",
         },
       ],
     },
@@ -91,13 +91,13 @@ export default function TeamSection() {
           name: "Omar Patel",
           role: "Full-Stack Engineer",
           desc: "Builds robust APIs and performant UIs with modern tooling.",
-          image: "/images/web.svg",
+          image: "/images/Director1.svg",
         },
         {
           name: "Omar Patel",
           role: "App Engineer",
           desc: "Scales app architecture with strong typing and tests.",
-          image: "/images/app.svg",
+          image: "/images/Director2.svg",
         },
       ],
     },
@@ -107,13 +107,13 @@ export default function TeamSection() {
           name: "Lina Gomez",
           role: "Data Scientist",
           desc: "Turns data into actionable insights with ML and experimentation.",
-          image: "/images/Ai.svg",
+          image: "/images/Director1.svg",
         },
         {
           name: "Lina Gomez",
           role: "Analytics Lead",
           desc: "Partners with product to define metrics and drive outcomes.",
-          image: "/images/growth.svg",
+          image: "/images/Director2.svg",
         },
       ],
     },
@@ -156,6 +156,7 @@ export default function TeamSection() {
           ))}
         </div>
       </div>
+
     </section>
   );
 }
@@ -192,14 +193,22 @@ function MemberCard({ slides }: { slides: MemberSlide[] }) {
           <CarouselContent>
             {slides.map((s, i) => (
               <CarouselItem key={i}>
-                <div className="relative w-full h-60">
+                <div className="relative w-80 h-60 mx-auto rounded-md overflow-hidden mt-4">
                   <Image src={s.image} alt={s.name} fill className="object-cover" />
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-2" />
-          <CarouselNext className="right-2" />
+          <CarouselPrevious variant="ghost" className="left-3 top-1/2 -translate-y-1/2 h-8 w-8 text-white">
+            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </CarouselPrevious>
+          <CarouselNext variant="ghost" className="right-3 top-1/2 -translate-y-1/2 h-8 w-8 text-white">
+            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </CarouselNext>
         </Carousel>
       </CardHeader>
       <CardContent className="p-6 text-left flex-1 flex flex-col">

@@ -19,25 +19,25 @@ export default function BlogSection() {
       title: "Web Design & Development",
       subtitle: "Design drives trust",
       desc: "Learn why design matters and how to fix an outdated site.",
-      img: "/images/blog1.jpg",
+      img: "/images/blog2.svg",
     },
     {
       title: "SEO & Marketing",
       subtitle: "Get found fast",
       desc: "Practical tips to climb search rankings.",
-      img: "/images/blog2.jpg",
+      img: "/images/blog2.svg",
     },
     {
       title: "Mobile Apps",
       subtitle: "Keep customers coming back",
       desc: "How mobile apps increase retention.",
-      img: "/images/blog3.jpg",
+      img: "/images/blog2.svg",
     },
     {
       title: "AI & Automation",
       subtitle: "Work smarter",
       desc: "Discover how AI tools can streamline your business.",
-      img: "/images/blog4.jpg",
+      img: "/images/blog2.svg",
     },
   ];
 
@@ -62,7 +62,7 @@ export default function BlogSection() {
           <CarouselContent>
             {blogs.map((blog, index) => (
               <CarouselItem key={index} className="md:basis-1/3 h-full">
-                <Card className="relative h-full flex flex-col overflow-hidden rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <Card className="relative h-full min-h-[420px] flex flex-col overflow-hidden rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                   {/* Image */}
                   <CardHeader className="p-0">
                     <div className="relative w-full h-48">

@@ -1,9 +1,9 @@
 import React from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { web, app, UI, mobile, Ai, Digitalmarketing, content, social, growth, user } from '../../../public/images';
 
 interface BenefitCardProps {
-  icon: any;
+  icon: StaticImageData;
   title: string;
   description: string;
   subdes?: string;

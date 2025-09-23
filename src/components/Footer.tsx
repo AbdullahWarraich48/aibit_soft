@@ -49,7 +49,7 @@ export default function Footer() {
             </a>
           </div>
          
-          <div className="mt-4 text-sm font-sans flex flex-row gap-4 mt-9 pt-16">
+          <div className="mt-4 text-sm font-sans flex flex-row gap-4 mt-9 pt-[90px]">
             <p>📧 info@aibitsoft.com</p>
             <p>📞 +92 55 8416985 6</p>
           </div>
@@ -58,7 +58,7 @@ export default function Footer() {
         {/* Middle Column */}
         <div>
           <h3 className="text-lg font-semibold mb-4">Services</h3>
-          <ul className="space-y-4 text-sm mt-12 ">
+          <ul className="space-y-[15px] text-sm mt-12 ">
             <li>Website Design and Development</li>
             <li>Web App Design and Development</li>
             <li>UI/UX and Graphics Design</li>
@@ -92,7 +92,7 @@ export default function Footer() {
               ))}
             </fieldset>
             <textarea placeholder="Message" rows={3} className="w-full p-2 bg-white/10 rounded"></textarea>
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 transition w-full py-2 rounded">Send</button>
+            <button type="submit" className="bg-blue-500 hover:bg-blue-700 transition w-full py-2 rounded mt-7">Send</button>
           </form>
         </div>
       </div>

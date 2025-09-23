@@ -139,11 +139,12 @@ export default function TeamSection() {
     <section className="py-16 bg-blue-50">
       <div className="max-w-6xl mx-auto px-6 text-center">
         {/* Header */}
-        <h4 className="text-sm font-semibold text-blue-600 mb-2">OUR TEAM</h4>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="inline-block px-3 py-1 font-bold text-2xl  text-blue-600 mb-4 font-sora">
+        OUR TEAM</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 ">
           Expertise You Can Trust
         </h2>
-        <p className="text-gray-600 mb-12">
+        <p className="text-gray-600 mb-12 font-sora mt-5">
           PhD scholars, business experts, and technology professionals collaborating to deliver excellence.
         </p>
 

@@ -29,7 +29,7 @@ export const footerData: FooterData = {
     'Blog and Content Marketing',
     'Digital Marketing',
     'Custom AI Tools and Integration',
-    'Custom Software Development',
+    'Custom Service',
     'IT Staff Augmentation'
   ],
   contact: {
@@ -54,7 +54,7 @@ export const footerData: FooterData = {
         'Website Development',
         'SEO & Marketing',
         'AI and Automation Tools',
-        'Custom Software Development',
+        'Custom Service',
         'IT Staff Augmentation'
       ]
     },

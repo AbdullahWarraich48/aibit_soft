@@ -13,9 +13,28 @@ import ProblemsHero from './ProblemsHero';
 import SolutionGrid from './SolutionGrid';
 import Image from 'next/image';
 import { fb, insta, twiter, Linkedin, plus, zoom, whatsap, meet } from '../../../public/images';
+import ScheduleMeet from './ScheduleMeet';
 
 const HeroSection = () => {
   const [activeSection, setActiveSection] = useState('hero');
+  const [isScheduleOpen, setIsScheduleOpen] = useState<boolean>(false);
+  const organizationEmail = "meetings@yourcompany.com"; // static org email
+  const organizationWhatsApp = "923008642198"; // E.164 without + (PK example for 03008642198)
+  const companyName = "AiBIt soft";
+
+  const handleOpenSchedule = () => {
+    setIsScheduleOpen(true);
+  };
+
+  const handleCloseSchedule = () => {
+    setIsScheduleOpen(false);
+  };
+
+  const handleOpenWhatsApp = () => {
+    const message = `Hi ${companyName}, I’d like to book an appointment.`;
+    const whatsappUrl = `https://wa.me/${organizationWhatsApp}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  };
 
   const NavigationButtons = () => (
     <div className="mt-10 flex flex-row justify-center items-center gap-7 border px-7 py-5 rounded-lg w-fit mx-auto bg-[#5766BF]">
@@ -69,38 +88,49 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
 
           
-             <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-30">
-               <div className="bg-white backdrop-blur-sm rounded-r-full pt-2 pb-2 flex flex-col items-center space-y-2">
-                 <a href="#" className="p-3 hover:bg-gray-100 rounded-xl transition-colors">
-                   <Image src={fb} alt="Facebook" width={24} height={24} />
-                 </a>
-                 <a href="#" className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
-                   <Image src={insta} alt="Instagram" width={24} height={24} />
-                 </a>
-                 <a href="#" className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
-                   <Image src={twiter} alt="Twitter" width={24} height={24} />
-                 </a>
-                 <a href="#" className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
-                   <Image src={Linkedin} alt="LinkedIn" width={24} height={24} />
-                 </a>
-                 <a href="#" className="p-2 hover:bg-gray-100 rounded-xl transition-colors">
-                   <Image src={plus} alt="Plus" width={24} height={24} />
-                 </a>
-               </div>
-             </div>
+            <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-30">
+              <div className="bg-white backdrop-blur-sm rounded-r-full pt-2 pb-2 flex flex-col items-center space-y-2">
+                <a href="#" className="group p-3 hover:bg-gray-100 rounded-xl transition-colors">
+                  <Image src={fb} alt="Facebook" width={24} height={24} className="transition-transform duration-500 ease-out group-hover:scale-150" />
+                </a>
+                <a href="#" className="group p-2 hover:bg-gray-100 rounded-xl transition-colors">
+                  <Image src={insta} alt="Instagram" width={24} height={24} className="transition-transform duration-500 ease-out group-hover:scale-150" />
+                </a>
+                <a href="#" className="group p-2 hover:bg-gray-100 rounded-xl transition-colors">
+                  <Image src={twiter} alt="Twitter" width={24} height={24} className="transition-transform duration-500 ease-out group-hover:scale-150" />
+                </a>
+                <a href="#" className="group p-2 hover:bg-gray-100 rounded-xl transition-colors">
+                  <Image src={Linkedin} alt="LinkedIn" width={24} height={24} className="transition-transform duration-500 ease-out group-hover:scale-150" />
+                </a>
+                <a href="#" className="group p-2 hover:bg-gray-100 rounded-xl transition-colors">
+                  <Image src={plus} alt="Plus" width={24} height={24} className="transition-transform duration-500 ease-out group-hover:scale-150" />
+                </a>
+              </div>
+            </div>
 
             {/* Contact/Chat Sidebar */}
             <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-30">
               <div className="flex flex-col items-center space-y-4">
-                <a href="#" className="p-2 hover:bg-white/20 rounded-xl transition-colors">
-                  <Image src={zoom} alt="Zoom" width={24} height={24} />
+                <a href="#" className="group p-2 hover:bg-white/20 rounded-xl transition-colors">
+                  <Image src={zoom} alt="Zoom" width={24} height={24} className="transition-transform duration-500 ease-out group-hover:scale-150" />
                 </a>
-                <a href="#" className="p-2 hover:bg-white/20 rounded-xl transition-colors">
-                  <Image src={meet} alt="Meet" width={24} height={24} />
-                </a>
-                <a href="#" className="p-2 hover:bg-white/20 rounded-xl transition-colors">
-                  <Image src={whatsap} alt="WhatsApp" width={24} height={24} />
-                </a>
+                <button
+                  type="button"
+                  onClick={handleOpenSchedule}
+                  aria-label="Schedule a Google Meet"
+                  className="group p-2 hover:bg-white/20 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                >
+                  <Image src={meet} alt="Meet" width={24} height={24} className="transition-transform duration-500 ease-out group-hover:scale-150" />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleOpenWhatsApp}
+                  aria-label={`Chat with ${companyName} on WhatsApp`}
+                  title={`Chat with ${companyName} on WhatsApp`}
+                  className="group p-2 hover:bg-white/20 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-green-300"
+                >
+                  <Image src={whatsap} alt="WhatsApp" width={24} height={24} className="transition-transform duration-500 ease-out group-hover:scale-150" />
+                </button>
               </div>
             </div>
 
@@ -136,6 +166,7 @@ const HeroSection = () => {
                 <NavigationButtons />
               </div>
             </div>
+            <ScheduleMeet isOpen={isScheduleOpen} onClose={handleCloseSchedule} organizationEmail={organizationEmail} />
           </section>
         );
     }

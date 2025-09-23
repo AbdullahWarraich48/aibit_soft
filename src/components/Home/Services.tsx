@@ -54,7 +54,7 @@ const ServicesData = {
     { title: 'Digital Marketing', description: 'Campaigns that boost traffic and conversions.', subdes: 'SEO, SEM, and performance marketing.', button: 'Learn More', icon: Digitalmarketing },
     { title: 'Content That Converts', description: 'SEO-backed content that educates and sells.', subdes: 'Blogs, landing pages, and email copy.', button: 'Learn More', icon: content },
     { title: 'Social Ads That Sell', description: 'Targeted ads for engagement and ROAS.', subdes: 'Creative production and ad ops.', button: 'Learn More', icon: social },
-    { title: 'Custom Software Development', description: 'Tailored systems for unique business needs.', subdes: 'Internal tools, dashboards, and integrations.', button: 'Learn More', icon: growth },
+    { title: 'Custom Software ', description: 'Tailored systems for unique business needs.', subdes: 'Internal tools, dashboards, and integrations.', button: 'Learn More', icon: growth },
     { title: 'IT Staff Augmentation', description: 'Scale your team with vetted experts.', subdes: 'Flexible engagement models.', button: 'Learn More', icon: user },
   ],
 };
@@ -78,15 +78,16 @@ const Services: React.FC = () => {
   return (
     <section className="w-full bg-[#F4F7FF] py-20 font-sans">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header Section */}
+    
         <div className="text-center mb-12">
-          <h2 className="inline-block px-3 py-1 text-weight-[700px] text-2xl mb-4 font-sora">
+          <h2 className="inline-block px-3 py-1 font-bold text-2xl  text-blue-600 mb-4 font-sora">
           Our Services
           </h2>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 font-sans">
-          Specialized Expertise, Unified Innovation
+            <span>Specialized Expertise, Unified</span>
+            <span className="block mt-2">Innovation</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto font-sans">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto font-sora mt-5">
           Tailored digital solutions designed to drive results.
           </p>
         </div>

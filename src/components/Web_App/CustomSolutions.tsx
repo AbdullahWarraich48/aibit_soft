@@ -40,20 +40,19 @@ export default function CustomSolutions() {
     <section className="max-w-7xl mx-auto px-6 py-20 font-sans">
       {/* Call-to-Action Section */}
       <div className="bg-blue-50 border border-blue-200 rounded-3xl p-8 text-center mb-16">
-        <h2 className="text-3xl font-bold text-blue-900 mt-6 font-sans">
+        <h2 className="text-3xl font-bold text-blue-900 mt-6 font-sans leading-[20px]">
           {customSolutionsData.cta.title}
         </h2>
-        <p className="text-gray-600 mt-6 font-sans">
+        <p className="text-gray-600 mt-6 font-sans leading-[20px]">
           {customSolutionsData.cta.description}
         </p>
         <button
-                type="button"
-                className={customSolutionsData.cta.button.className}
-                aria-label="Get a proposal"
-                onClick={handleCtaButton}
-              >
-                {customSolutionsData.cta.button.text}
-              </button>
+                 type="button"
+                 className=" text-black px-6 py-2.5 h-11 text-sm sm:text-base mt-6 mb-10 font-medium border border-gray-300 rounded-3xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 font-sans"
+                 aria-label="Get an Expert Appointment"
+               >
+                 Get an Expert Appointment
+               </button>
       </div>
  
       <div className="flex flex-col md:flex-row items-center gap-12 mb-16 mt-15">
@@ -73,24 +72,22 @@ export default function CustomSolutions() {
             </p>
           ))}
 
-          <div className="mt-8 flex gap-4">
+          <div className="mt-8 flex gap-4 leading-[20px]">
             <div className="flex items-center space-x-4">
-              <button
-                type="button"
-                className={customSolutionsData.buttons.primary.className}
-                aria-label="Get a proposal"
-                onClick={handleGetStarted}
-              >
-                {customSolutionsData.buttons.primary.text}
-              </button>
-              <button
-                type="button"
-                className={customSolutionsData.buttons.secondary.className}
-                aria-label="Book an expert"
-                onClick={handleBookExpert}
-              >
-                {customSolutionsData.buttons.secondary.text}
-              </button>
+            <button
+                 type="button"
+                 className="bg-[#2B4DDF] text-white px-6 py-2.5 h-11 text-sm sm:text-base mt-6 mb-10 font-medium border border-gray-300 rounded-3xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 font-sans"
+                 aria-label="Get a proposal"
+               >
+                 Get Started Today
+               </button>
+               <button
+                 type="button"
+                 className=" text-black px-6 py-2.5 h-11 text-sm sm:text-base mt-6 mb-10 font-medium border border-gray-300 rounded-3xl transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 font-sans"
+                 aria-label="Get a proposal"
+                >
+                  Book an Appointment
+               </button>
             </div>
           </div>
         </div>
@@ -118,8 +115,8 @@ export default function CustomSolutions() {
           {customSolutionsData.features.map((feature, index) => (
             <div key={index} className={`${getThemeClasses(feature.theme)} rounded-xl p-6 text-left`}>
               <div className="flex justify-start mb-4" dangerouslySetInnerHTML={{ __html: feature.icon }} />
-              <h3 className="text-lg font-bold text-gray-900 mb-2 font-sans">{feature.title}</h3>
-              <p className="text-sm text-gray-600 font-sans">{feature.description}</p>
+              <h3 className="text-lg font-bold text-gray-900 mb-2 font-sans leading-[20px]">{feature.title}</h3>
+              <p className="text-sm text-gray-600 font-sans leading-[20px]">{feature.description}</p>
             </div>
           ))}
         </div>

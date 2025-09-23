@@ -45,11 +45,12 @@ export default function BlogSection() {
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-6 text-center">
         {/* Header */}
-        <h4 className="text-sm font-semibold text-blue-600 mb-2">BLOGS</h4>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 className="inline-block px-3 py-1 font-bold text-2xl  text-blue-600 mb-4 font-sora">
+        BLOGS</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 ">
           Learn, Grow, And Stay Ahead
         </h2>
-        <p className="text-gray-600 mb-12">
+        <p className="text-gray-600 mb-12 font-sora mt-5">
           Tips, guides, and trends to help your business perform better online.
         </p>
 

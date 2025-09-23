@@ -37,3 +37,9 @@ export{default as ban} from './ban.svg';
 export{default as Director1} from './Director.jpg';
 export{default as Director2} from './Director2.svg';
 export{default as Director3} from './Director3.svg';
+
+// New service illustrations
+export { default as AIAutomation } from './AIAutomation.svg';
+export { default as CustomDevelopment } from './CustomDevelopment.svg';
+export { default as ITStaff } from './ITStaff.svg';
+export { default as WebMobApp } from './WebMobApp.svg';

@@ -11,11 +11,13 @@ export default function ProcessSteps() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
-          <h4 className="text-sm font-semibold text-blue-600 mb-2">OUR STEPS</h4>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Our 3-Step Process To Launch & Support <br /> Your Digital Solution
+                   
+                      <h2 className="inline-block px-3 py-1 font-bold text-2xl  text-blue-600 mb-4 font-sora">OUR STEPS</h2>
+  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-sora ">
+            <span>Our 3-Step Process To Launch & Support</span>
+            <span className="block mt-2">Your Digital Solution</span>
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-600 font-sora mt-5">
             Consult → Build → Support — a simple process that delivers measurable outcomes.
           </p>
         </div>

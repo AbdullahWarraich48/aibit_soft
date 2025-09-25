@@ -47,7 +47,7 @@ export default function BlogSection() {
         {/* Header */}
         <h2 className="inline-block px-3 py-1 font-bold text-2xl  text-blue-600 mb-4 font-sora">
         BLOGS</h2>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 ">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 mt-">
           Learn, Grow, And Stay Ahead
         </h2>
         <p className="text-gray-600 mb-12 font-sora mt-5">
@@ -62,13 +62,13 @@ export default function BlogSection() {
         >
           <CarouselContent>
             {blogs.map((blog, index) => (
-              <CarouselItem key={index} className="basis-[80%] sm:basis-[60%] h-full pr-2">
-                <Card className="relative h-full min-h-[360px] flex flex-col overflow-hidden rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <CarouselItem key={index} className="md:basis-1/3 h-full">
+                <Card className="relative h-full min-h-[420px] flex flex-col overflow-hidden rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                   {/* Image */}
                   <CardHeader className="p-0">
-                    <div className="relative w-full h-40">
+                    <div className="relative w-full h-48">
                       <Image
-                        src={blog.img}
+                       src={blog.img}
                         alt={blog.title}
                         fill
                         className="object-cover"

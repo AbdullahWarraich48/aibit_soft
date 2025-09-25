@@ -81,7 +81,7 @@ export default function CustomSolutions() {
 
        
         <div className="flex-1 flex justify-center items-center gap-6 order-2 md:order-2">
-          <div className="block w-64 h-40 sm:w-80 sm:h-52 lg:w-[450px] lg:h-[270px]">
+          <div className="block w-64 h-40 sm:w-80 sm:h-52 lg:w-[450px] lg:h-[270px] ">
             <Image
               src={CustomSection}
               alt="Desktop Mockup"

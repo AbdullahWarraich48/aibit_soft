@@ -62,11 +62,11 @@ export default function BlogSection() {
         >
           <CarouselContent>
             {blogs.map((blog, index) => (
-              <CarouselItem key={index} className="md:basis-1/3 h-full">
-                <Card className="relative h-full min-h-[420px] flex flex-col overflow-hidden rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <CarouselItem key={index} className="basis-[80%] sm:basis-[60%] h-full pr-2">
+                <Card className="relative h-full min-h-[360px] flex flex-col overflow-hidden rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                   {/* Image */}
                   <CardHeader className="p-0">
-                    <div className="relative w-full h-48">
+                    <div className="relative w-full h-40">
                       <Image
                         src={blog.img}
                         alt={blog.title}

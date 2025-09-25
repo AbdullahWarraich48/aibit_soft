@@ -1,4 +1,5 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { web, app, UI, mobile, Ai, Digitalmarketing, content, social, growth, user } from '../../../public/images';
 
@@ -60,6 +61,7 @@ const ServicesData = {
 };
 
 const Services: React.FC = () => {
+  const [showAllMobile, setShowAllMobile] = useState(false);
 
   const getItemGridClass = (index: number) => {
     const total = ServicesData.benefits.length;
@@ -95,7 +97,10 @@ const Services: React.FC = () => {
    
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {ServicesData.benefits.map((benefit, index) => (
-            <div key={index} className={`${getItemGridClass(index)} h-full`}>
+            <div
+              key={index}
+              className={`${getItemGridClass(index)} h-full ${!showAllMobile && index >= 5 ? 'hidden md:block' : ''}`}
+            >
               <BenefitCard
                 icon={benefit.icon}
                 title={benefit.title}
@@ -107,15 +112,15 @@ const Services: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="mt-8 flex justify-center">
-      <button
-        type="button"
-        className="px-4 py-2 rounded-3xl text-sm font-medium bg-[#2B4DDF] text-white transition-colors duration-200 font-sans inline-flex items-center gap-2 justify-center"
-        aria-label="Explore our services"
-      >
-        Explore Our Services
-      
-      </button>
+      <div className="mt-8 flex justify-center md:hidden">
+        <button
+          type="button"
+          onClick={() => setShowAllMobile(v => !v)}
+          className="px-4 py-2 rounded-3xl text-sm font-medium bg-[#2B4DDF] text-white transition-colors duration-200 font-sans inline-flex items-center gap-2 justify-center"
+          aria-label={showAllMobile ? 'Show fewer services' : 'Expand services'}
+        >
+          {showAllMobile ? 'Show Less' : 'Expand Services'}
+        </button>
       </div>
     </section>
   );

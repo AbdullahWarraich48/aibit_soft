@@ -29,6 +29,7 @@ import ScheduleMeet from "../Web_App/ScheduleMeet";
 
 export default function HeroSection() {
   const [startIndex, setStartIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(2);
   const [activeTab, setActiveTab] = useState("apps");
   const [isScheduleOpen, setIsScheduleOpen] = useState<boolean>(false);
 
@@ -57,9 +58,20 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, [tabs.length]);
 
-  // Always show 3 tabs
+ 
+  useEffect(() => {
+    const updateCount = () => {
+      if (typeof window === 'undefined') return;
+      setVisibleCount(window.innerWidth >= 768 ? 3 : 2);
+    };
+    updateCount();
+    window.addEventListener('resize', updateCount);
+    return () => window.removeEventListener('resize', updateCount);
+  }, []);
+
+  // Visible tabs window (responsive)
   const getVisibleTabs = () => {
-    return Array.from({ length: 3 }, (_, i) => {
+    return Array.from({ length: visibleCount }, (_, i) => {
       return tabs[(startIndex + i) % tabs.length];
     });
   };
@@ -89,9 +101,9 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="bg-white relative px-8 py-12 md:py-20">
+    <section className="bg-white relative px-4 sm:px-6 md:px-8 py-10 md:py-20">
       {/* Social Icons - Left */}
-      <div className="absolute left-[120px] top-[40%] transform -translate-y-2/4 ">
+      <div className="absolute left-4 lg:left-[120px] top-[40%] transform -translate-y-1/2 hidden md:block">
         <div className="bg-white backdrop-blur-sm rounded-r-full pt-2 pb-2 flex flex-col items-center space-y-2 shadow-lg">
           {[fb, insta, twiter, Linkedin, plus].map((icon, idx) => (
             <a
@@ -113,27 +125,27 @@ export default function HeroSection() {
 
       {/* Header + Content */}
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-[1.2] md:leading-[1.15] font-sans">
-            Smart Digital Solutions for Your
-            <br className="hidden md:block" />
-            <span className="text-[#2B4DDF]"> Business Growth</span>
-          </h2>
-          <p className="mt-4 text-gray-600 font-sans">
+      {/* Header */}
+      <div className="text-center max-w-4xl mx-auto mt-2 sm:mt-[-40px]">
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 leading-[1.2] md:leading-[1.15] font-sans">
+          Smart Digital Solutions for Your
+          <br className="hidden md:block" />
+          <span className="text-[#2B4DDF]"> Business Growth</span>
+        </h2>
+        <p className="mt-4 text-gray-600 font-sans">
             From responsive web apps to AI-powered tools, AiBit Soft delivers
             experiences that engage, convert, and scale your business.
-          </p>
-        </div>
+        </p>
+      </div>
 
-        {/* Tabs + Content */}
-        <div className="mt-12 grid md:grid-cols-3 gap-6 md:gap-8">
-          {/* Sidebar Tabs */}
-          <div className="flex md:flex-col gap-4 bg-[#EEF2FF] rounded-2xl p-4 items-center md:items-center justify-center md:justify-center overflow-x-auto md:overflow-y-auto scrollbar-hide w-full max-w-[320px] sm:max-w-[350px] md:max-w-full h-[420px] md:h-[460px]">
+  
+         <div className="mt-8 md:mt-12 grid md:grid-cols-3 gap-6 md:gap-8">
+         
+        <div className="flex flex-row md:flex-col gap-4 md:gap-8 bg-[#E8EDFF] rounded-r-2xl p-4 md:p-8 items-start md:items-center justify-start md:justify-center shadow overflow-hidden overflow-x-auto md:overflow-y-auto scrollbar-hide w-full max-w-full md:max-w-full h-auto md:h-[360px]">
             <AnimatePresence mode="sync">
               {getVisibleTabs().map((tab, index) => {
                 const isFirst = index === 0;
-                return (
+              return (
                   <motion.button
                     key={tab.id}
                     onClick={() => handleTabSelect(tab.id)}
@@ -141,54 +153,55 @@ export default function HeroSection() {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -50, opacity: 0 }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className={`flex items-center justify-start gap-3 px-4 sm:px-5 w-full max-w-[280px] sm:max-w-[300px] py-3 rounded-xl text-left font-medium transition-all duration-700 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2B4DDF] flex-shrink-0 font-sans border border-transparent ${
+                  className={`flex items-center justify-start gap-3 px-4 sm:px-5 w-full max-w-[280px] sm:max-w-[300px] py-3 rounded-xl text-left font-medium text-sm md:text-base transition-all duration-700 ease-in-out focus:outline-none focus:ring-2 focus:ring-[#2B4DDF] flex-shrink-0 font-sans border border-transparent ${
                       isFirst
-                        ? "bg-[#2B4DDF] text-white shadow-lg transform scale-105 border-[#2B4DDF]"
-                        : "bg-white text-gray-700 hover:bg-gray-50 hover:scale-102 border-gray-200 hover:border-gray-300"
-                    }`}
-                  >
-                    <span
-                       className={`inline-flex items-center justify-center w-7 h-7 rounded-md ${
+                       ? "bg-[#2B4DDF] text-white shadow-lg transform scale-105 border-[#2B4DDF]"
+                       : "bg-white text-gray-700 hover:bg-gray-50 hover:scale-102 border-gray-200 hover:border-gray-300"
+                   }`}
+                 >
+                <span
+                  className={`inline-flex items-center justify-center w-7 h-7 rounded-md ${
                          isFirst
                           ? "bg-white text-[#2B4DDF]"
                           : "bg-[#E9ECFF] text-[#2B4DDF]"
-                      }`}
-                    >
+                  }`}
+                >
                       <Image src={tab.icon} alt="" width={16} height={16} />
-                    </span>
-                    <span className="whitespace-nowrap">{tab.label}</span>
+                </span>
+                <span className="whitespace-nowrap">{tab.label}</span>
                   </motion.button>
-                );
-              })}
+            );
+          })}
             </AnimatePresence>
-          </div>
+        </div>
 
           {/* Content Area */}
-          <div className="md:col-span-2 bg-[#E8EDFF] rounded-2xl p-8 shadow flex items-center justify-start gap-8 h-[420px] md:h-[460px] overflow-hidden">
+        <div className="md:col-span-2 bg-[#E8EDFF] rounded-l-2xl p-6 md:p-8 shadow flex items-center justify-start gap-6 md:gap-8 h-auto md:h-[360px] overflow-hidden">
             <AnimatePresence mode="wait">
-               {activeTab === "apps" && (
+          {activeTab === "apps" && (
                 <motion.div
                   key="apps"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="flex items-center gap-8 w-full"
+                  className="flex sm:flex-row flex-col items-center gap-4 sm:gap-8 w-full"
                 >
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-800 font-sans">
-                      Web & Mobile Apps
-                    </h3>
-                    <p className="mt-2 text-gray-600 font-sans">
-                      Build scalable and intuitive apps. Custom web and mobile
-                      solutions that drive revenue and deliver seamless user
-                      experiences.
-                    </p>
-                    <a
-                      href="#"
-                      className="mt-4 inline-flex items-center gap-2 text-[#2B4DDF] font-medium font-sans"
-                    >
-                      Learn More
+                  <div className="flex sm:flex-row flex-col gap-4">
+              <div className="flex-1 h-[360px] md:h-auto">
+                <h3 className="text-xl font-semibold text-gray-800 font-sans">
+                  Web & Mobile Apps
+                </h3>
+                <p className="mt-2 text-gray-600 font-sans">
+                  Build scalable and intuitive apps. Custom web and mobile
+                  solutions that drive revenue and deliver seamless user
+                  experiences.
+                </p>
+                <a
+                  href="#"
+                  className="mt-4 inline-flex items-center gap-2 text-[#2B4DDF] font-medium font-sans"
+                >
+                  Learn More
                       <svg
                         className="w-4 h-4"
                         viewBox="0 0 24 24"
@@ -196,43 +209,44 @@ export default function HeroSection() {
                         stroke="currentColor"
                         strokeWidth="2"
                       >
-                        <path d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
-                  <div className="flex-1 flex justify-center">
-                    <Image
-                      src="/images/WebMobApp.svg"
-                      alt="Web & Mobile Apps"
-                      width={380}
-                      height={260}
-                    />
-                  </div>
+                    <path d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <div className="flex-1 flex justify-center h-[360px] md:h-auto">
+  <Image
+    src="/images/WebMobApp.svg"
+    alt="Web & Mobile Apps"
+    width={380}
+    height={260}
+  />
+</div>
+</div>
                 </motion.div>
-              )}
+          )}
 
-               {activeTab === "website" && (
+          {activeTab === "website" && (
                 <motion.div
                   key="website"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="flex items-center gap-8 w-full"
+                  className="flex sm:flex-row flex-col items-center gap-4 sm:gap-8 w-full"
                 >
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-800 font-sans">
-                      Website Development
-                    </h3>
-                    <p className="mt-2 text-gray-600 font-sans">
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold text-gray-800 font-sans">
+                  Website Development
+                </h3>
+                <p className="mt-2 text-gray-600 font-sans">
                       Responsive, modern, and conversion-focused websites that
                       bring your brand to life online.
-                    </p>
-                    <a
-                      href="#"
-                      className="mt-4 inline-flex items-center gap-2 text-[#2B4DDF] font-medium font-sans"
-                    >
-                      Learn More
+                </p>
+                <a
+                  href="#"
+                  className="mt-4 inline-flex items-center gap-2 text-[#2B4DDF] font-medium font-sans"
+                >
+                  Learn More
                       <svg
                         className="w-4 h-4"
                         viewBox="0 0 24 24"
@@ -240,43 +254,43 @@ export default function HeroSection() {
                         stroke="currentColor"
                         strokeWidth="2"
                       >
-                        <path d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
-                  <div className="flex-1 flex justify-center">
-                    <Image
+                    <path d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <div className="flex-1 flex justify-center">
+                <Image
                             src={CustomDevelopment}
-                            alt="Website Development"
-                            width={350}
-                      height={250}
-                    />
-                  </div>
+                  alt="Website Development"
+                  width={350}
+                  height={250}
+                />
+              </div>
                 </motion.div>
-              )}
+          )}
 
-               {activeTab === "seo" && (
+          {activeTab === "seo" && (
                 <motion.div
                   key="seo"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="flex items-center gap-8 w-full"
+                  className="flex sm:flex-row flex-col items-center gap-4 sm:gap-8 w-full"
                 >
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-800 font-sans">
-                      SEO & Marketing
-                    </h3>
+              <div className="flex-1">
+                <h3 className="text-xl font-semibold text-gray-800 font-sans">
+                  SEO & Marketing
+                </h3>
                   <p className="mt-4 text-gray-600 font-sans">
                     Data-driven SEO and creative marketing campaigns that increase traffic, improve
                     rankings, and turn clicks into customers.
-                  </p>
-                    <a
-                      href="#"
-                      className="mt-4 inline-flex items-center gap-2 text-[#2B4DDF] font-medium font-sans"
-                    >
-                      Learn More
+                </p>
+                <a
+                  href="#"
+                  className="mt-4 inline-flex items-center gap-2 text-[#2B4DDF] font-medium font-sans"
+                >
+                  Learn More
                       <svg
                         className="w-4 h-4"
                         viewBox="0 0 24 24"
@@ -284,18 +298,18 @@ export default function HeroSection() {
                         stroke="currentColor"
                         strokeWidth="2"
                       >
-                        <path d="M9 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
-                  <div className="flex-1 flex justify-center">
-                    <Image
-                      src="/images/Blog2.svg"
-                      alt="SEO & Marketing"
-                      width={350}
-                      height={250}
-                    />
-                  </div>
+                    <path d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <div className="flex-1 flex justify-center">
+                <Image
+                   src="/images/Blog2.svg" 
+                  alt="SEO & Marketing"
+                  width={350}
+                  height={250}
+                />
+              </div>
                 </motion.div>
               )}
 
@@ -306,7 +320,7 @@ export default function HeroSection() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="flex items-center gap-8 w-full"
+                  className="flex sm:flex-row flex-col items-center gap-4 sm:gap-8 w-full"
                 >
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-gray-800 font-sans">
@@ -345,7 +359,7 @@ export default function HeroSection() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="flex items-center gap-8 w-full"
+                  className="flex sm:flex-row flex-col items-center gap-4 sm:gap-8 w-full"
                 >
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-gray-800 font-sans">
@@ -384,7 +398,7 @@ export default function HeroSection() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -30 }}
                   transition={{ duration: 0.5 }}
-                  className="flex items-center gap-8 w-full"
+                  className="flex sm:flex-row flex-col items-center gap-4 sm:gap-8 w-full"
                 >
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold text-gray-800 font-sans">
@@ -421,7 +435,7 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom contact icons */}
-      <div className="absolute bottom-6 left-[120px] hidden lg:block">
+      <div className="absolute bottom-4 sm:bottom-6 left-4 lg:left-[120px] hidden md:block">
         <div className="flex flex-row items-center space-x-4">
           <a
             href="#"

@@ -148,8 +148,23 @@ export default function TeamSection() {
           PhD scholars, business experts, and technology professionals collaborating to deliver excellence.
         </p>
 
-        {/* Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Mobile: Carousel like Blogs */}
+        <div className="md:hidden">
+          <Carousel opts={{ loop: true, align: "start" }} className="w-full max-w-6xl mx-auto px-2">
+            <CarouselContent>
+              {team.map((member, index) => (
+                <CarouselItem key={index} className="basis-[80%] sm:basis-[60%] pr-2">
+                  <div className="h-full">
+                    <MemberCard slides={member.slides} />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+
+        {/* Desktop: 3-column grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-6">
           {team.slice(0, 3).map((member, index) => (
             <div key={index} className="h-full">
               <MemberCard slides={member.slides} />
@@ -194,7 +209,7 @@ function MemberCard({ slides }: { slides: MemberSlide[] }) {
           <CarouselContent>
             {slides.map((s, i) => (
               <CarouselItem key={i}>
-                <div className="relative w-80 h-60 mx-auto rounded-md overflow-hidden mt-4">
+                <div className="relative mx-auto mt-4 rounded-md overflow-hidden w-[245px] h-36 sm:w-60 sm:h-44 md:w-72 md:h-56">
                   <Image src={s.image} alt={s.name} fill className="object-cover" />
                 </div>
               </CarouselItem>

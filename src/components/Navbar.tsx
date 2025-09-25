@@ -16,6 +16,66 @@ import { web, app, UI, mobile, Alert, Ai, Digitalmarketing, content, social, cal
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [mobileOpenSections, setMobileOpenSections] = useState<Record<number, boolean>>({});
+  const [selectedMobileSection, setSelectedMobileSection] = useState<number | null>(null);
+
+  const toggleMobileSection = (index: number) => {
+    setMobileOpenSections((prev) => {
+      const isOpen = !!prev[index]
+      // Allow only one section open at a time
+      return isOpen ? {} : { [index]: true }
+    })
+  };
+
+  const titleToSlug = (title: string): string => {
+    if (title === 'Solutions for Your Business') return 'solutions'
+    if (title === 'Grow Your Reach') return 'reach'
+    if (title === 'Resources') return 'resources'
+    if (title === 'Connect With Us') return 'connect'
+    return ''
+  }
+
+  const getMenuItemIcon = (menuTitle: string, index: number) => {
+    if (menuTitle === 'Solutions for Your Business') {
+      const icons = [
+        <Image key="web" src={web} alt="Web" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="app" src={app} alt="App" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="ui" src={UI} alt="UI" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="mobile" src={mobile} alt="Mobile" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="ai" src={Ai} alt="AI" width={24} height={24} className="w-6 h-6" />
+      ]
+      return icons[index] || icons[0]
+    }
+    if (menuTitle === 'Grow Your Reach') {
+      const icons = [
+        <Image key="marketing" src={Digitalmarketing} alt="Marketing" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="content" src={content} alt="Content" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="social" src={social} alt="Social" width={24} height={24} className="w-6 h-6" />
+      ]
+      return icons[index] || icons[0]
+    }
+    if (menuTitle === 'Resources') {
+      const icons = [
+        <Image key="web-design" src={web} alt="Web" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="seo-marketing" src={Digitalmarketing} alt="SEO" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="ai-automation" src={Ai} alt="AI" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="business-growth" src={growth} alt="Growth" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="blogs" src={blog} alt="Blogs" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="mobile-apps" src={mobile} alt="Mobile Apps" width={24} height={24} className="w-6 h-6" />
+      ]
+      return icons[index] || icons[0]
+    }
+    if (menuTitle === 'Connect With Us') {
+      const icons = [
+        <Image key="contact" src={contact} alt="Contact" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="appointment" src={call} alt="Call" width={24} height={24} className="w-6 h-6" />, 
+        <Image key="proposal" src={proposal} alt="Proposal" width={24} height={24} className="w-6 h-6" />
+      ]
+      return icons[index] || icons[0]
+    }
+    return <></>
+  }
 
   const handleMenuClick = (menuTitle: string) => {
     // If clicking the same menu, close it; otherwise, open the new menu
@@ -28,7 +88,7 @@ const Navbar = () => {
 
   // Prevent body scroll when any menu is open
   useEffect(() => {
-    if (activeMenu) {
+    if (activeMenu || isMobileOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -37,7 +97,7 @@ const Navbar = () => {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [activeMenu]);
+  }, [activeMenu, isMobileOpen]);
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -46,6 +106,7 @@ const Navbar = () => {
       // Check if click is outside the navbar
       if (!target.closest('nav')) {
         setActiveMenu(null);
+        setIsMobileOpen(false);
       }
     };
 
@@ -105,28 +166,29 @@ const Navbar = () => {
           </div>
 
           {/* Right side buttons */}
-          <div className="flex items-center space-x-4 flex-shrink-0">
+          <div className="flex items-center space-x-4 flex-shrink-0 ml-auto">
             <button
               type="button"
-              className={`${navigationData.buttons.primary.className} whitespace-nowrap transition-transform duration-300 ease-in-out hover:translate-y-1`}
+              className={`${navigationData.buttons.primary.className} whitespace-nowrap transition-transform duration-300 ease-in-out hover:translate-y-1 hidden md:inline-flex`}
               aria-label="Get a proposal"
             >
               {navigationData.buttons.primary.text}
             </button>
             <button
               type="button"
-              className={`${navigationData.buttons.secondary.className} whitespace-nowrap transition-transform duration-300 ease-in-out hover:translate-y-1`}
+              className={`${navigationData.buttons.secondary.className} whitespace-nowrap transition-transform duration-300 ease-in-out hover:translate-y-1 hidden md:inline-flex`}
               aria-label="Book an expert"
             >
               {navigationData.buttons.secondary.text}
             </button>
             
             {/* Mobile menu button */}
-            {/* <div className="md:hidden">
+            <div className="md:hidden ml-auto">
               <button
                 type="button"
                 className="text-black hover:text-gray-600 focus:outline-none focus:text-gray-600"
                 aria-label="Open main menu"
+                onClick={() => { setSelectedMobileSection(null); setMobileOpenSections({}); setIsMobileOpen(true); }}
               >
                 <svg
                   className="h-6 w-6"
@@ -142,7 +204,7 @@ const Navbar = () => {
                   />
                 </svg>
               </button>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
@@ -247,6 +309,132 @@ const Navbar = () => {
                 );
               })}
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mobile Drawer */}
+      {isMobileOpen && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          <div className="absolute inset-0 bg-black/40" onClick={() => { setIsMobileOpen(false); setSelectedMobileSection(null); setMobileOpenSections({}); }} />
+          <div className="absolute right-0 top-0 h-full w-full sm:w-4/5 max-w-none sm:max-w-xs bg-white shadow-xl p-6 flex flex-col">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-2">
+                {selectedMobileSection !== null && (
+                  <button
+                    type="button"
+                    aria-label="Back"
+                    className="p-1 mr-1 text-gray-700 hover:text-black"
+                    onClick={() => setSelectedMobileSection(null)}
+                  >
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                )}
+                <span className="text-base font-semibold">
+                  {selectedMobileSection !== null ? navigationData.menus[selectedMobileSection].title : 'Menu'}
+                </span>
+              </div>
+              <button
+                type="button"
+                aria-label="Close menu"
+                className="p-2 text-gray-600 hover:text-black"
+                onClick={() => { setIsMobileOpen(false); setSelectedMobileSection(null); setMobileOpenSections({}); }}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {selectedMobileSection === null ? (
+              <nav className="space-y-2 overflow-y-auto">
+                {navigationData.menus.map((menu, idx) => {
+                const open = !!mobileOpenSections[idx];
+                const getMobileIcon = (menuTitle: string, index: number) => {
+                  if (menuTitle === 'Solutions for Your Business') {
+                    const icons = [
+                      <Image key="web" src={web} alt="Web" width={20} height={20} className="w-5 h-5" />, 
+                      <Image key="app" src={app} alt="App" width={20} height={20} className="w-5 h-5" />, 
+                      <Image key="ui" src={UI} alt="UI" width={20} height={20} className="w-5 h-5" />, 
+                      <Image key="mobile" src={mobile} alt="Mobile" width={20} height={20} className="w-5 h-5" />, 
+                      <Image key="ai" src={Ai} alt="AI" width={20} height={20} className="w-5 h-5" />
+                    ];
+                    return icons[index] || icons[0];
+                  }
+                  if (menuTitle === 'Grow Your Reach') {
+                    const icons = [
+                      <Image key="marketing" src={Digitalmarketing} alt="Marketing" width={20} height={20} className="w-5 h-5" />, 
+                      <Image key="content" src={content} alt="Content" width={20} height={20} className="w-5 h-5" />, 
+                      <Image key="social" src={social} alt="Social" width={20} height={20} className="w-5 h-5" />
+                    ];
+                    return icons[index] || icons[0];
+                  }
+                  if (menuTitle === 'Resources') {
+                    const icons = [
+                      <Image key="web-design" src={web} alt="Web" width={20} height={20} className="w-5 h-5" />,
+                      <Image key="seo" src={Digitalmarketing} alt="SEO" width={20} height={20} className="w-5 h-5" />,
+                      <Image key="ai" src={Ai} alt="AI" width={20} height={20} className="w-5 h-5" />,
+                      <Image key="growth" src={growth} alt="Growth" width={20} height={20} className="w-5 h-5" />,
+                      <Image key="blog" src={blog} alt="Blog" width={20} height={20} className="w-5 h-5" />,
+                      <Image key="mob" src={mobile} alt="Mobile" width={20} height={20} className="w-5 h-5" />
+                    ];
+                    return icons[index] || icons[0];
+                  }
+                  if (menuTitle === 'Connect With Us') {
+                    const icons = [
+                      <Image key="contact" src={contact} alt="Contact" width={20} height={20} className="w-5 h-5" />, 
+                      <Image key="call" src={call} alt="Call" width={20} height={20} className="w-5 h-5" />, 
+                      <Image key="proposal" src={proposal} alt="Proposal" width={20} height={20} className="w-5 h-5" />
+                    ];
+                    return icons[index] || icons[0];
+                  }
+                  return null;
+                };
+
+                  return (
+                    <div key={idx} className="border-b border-gray-100 pb-2">
+                      <button
+                        type="button"
+                        onClick={() => setSelectedMobileSection(idx)}
+                        className="w-full flex items-center justify-between text-left text-sm font-semibold text-gray-900 py-2"
+                      >
+                        <span>{menu.title}</span>
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  );
+                })}
+              </nav>
+            ) : (
+              <div className="overflow-y-auto">
+                <div className="w-24 h-0.5 bg-[#2B4DDF] mb-2" />
+                <ul className="space-y-3">
+                  {navigationData.menus[selectedMobileSection].items.map((item, ii) => (
+                    <li key={ii}>
+                      <Link href={item.href} onClick={() => { setIsMobileOpen(false); setSelectedMobileSection(null); setMobileOpenSections({}); }} className="flex items-start justify-between gap-3 group">
+                        <div className="flex items-start gap-3">
+                          <div className="w-8 h-8 bg-[#E9ECFF] rounded-lg flex items-center justify-center">
+                            {getMenuItemIcon(navigationData.menus[selectedMobileSection].title, ii)}
+                          </div>
+                          <div>
+                            <p className="text-sm font-semibold text-gray-900 group-hover:text-[#2B4DDF]">{item.title}</p>
+                            {item.subtitle && <p className="text-xs text-gray-600 mb-0.5">{item.subtitle}</p>}
+                            {item.description && <p className="text-xs text-gray-600">{item.description}</p>}
+                          </div>
+                        </div>
+                        <svg className="w-4 h-4 text-gray-400 group-hover:text-[#2B4DDF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       )}

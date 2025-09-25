@@ -55,13 +55,9 @@ const ScheduleMeet: React.FC<ScheduleMeetProps> = ({ isOpen, onClose, organizati
     onClose();
   };
 
-  const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (event.target === event.currentTarget) onClose();
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === "Escape") onClose();
-  };
+  // Disable backdrop and Escape-to-close; modal closes only via explicit buttons
+  const handleBackdropClick = (_event: React.MouseEvent<HTMLDivElement>) => {};
+  const handleKeyDown = (_event: React.KeyboardEvent<HTMLDivElement>) => {};
 
   return (
     <div

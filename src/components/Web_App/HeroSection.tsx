@@ -37,7 +37,7 @@ const HeroSection = () => {
   };
 
   const NavigationButtons = () => (
-    <div className="mt-10 flex flex-row justify-center items-center gap-7 border px-7 py-5 rounded-lg w-fit mx-auto bg-[#5766BF]">
+    <div className="mt-10 hidden md:flex flex-row justify-center items-center gap-7 border px-7 py-5 rounded-lg w-fit mx-auto bg-[#5766BF]">
       <button 
         onClick={() => setActiveSection('statistics')}
         className={`flex items-center gap-2 transition-all duration-200 ${
@@ -88,7 +88,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
 
           
-            <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-30">
+            <div className="absolute left-0 top-1/2 transform -translate-y-1/2 z-30 hidden md:block">
               <div className="bg-white backdrop-blur-sm rounded-r-full pt-2 pb-2 flex flex-col items-center space-y-2">
                 <a href="#" className="group p-3 hover:bg-gray-100 rounded-xl transition-colors">
                   <Image src={fb} alt="Facebook" width={24} height={24} className="transition-transform duration-500 ease-out group-hover:scale-150" />
@@ -109,7 +109,7 @@ const HeroSection = () => {
             </div>
 
             {/* Contact/Chat Sidebar */}
-            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-30">
+            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-30 hidden md:block">
               <div className="flex flex-col items-center space-y-4">
                 <a href="#" className="group p-2 hover:bg-white/20 rounded-xl transition-colors">
                   <Image src={zoom} alt="Zoom" width={24} height={24} className="transition-transform duration-500 ease-out group-hover:scale-150" />
